@@ -23,6 +23,10 @@
     ></app-two>
     <app-three
       *ngSwitchCase="'three'"
+      [appValues]="appValues"
+      (next)="handleNext(appValues)"
+      (hasErrors)="handleErrors($event)"
+      (resultValues)="handleResultValue($event)"
     ></app-three>
   </div>
 </div>

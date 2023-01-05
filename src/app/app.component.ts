@@ -25,15 +25,26 @@ export class AppComponent {
     this.appValues = value;
     console.log(this.appValues);
   }
-
   handleErrors(error: any) {
     this.show = error.show;
     this.message = error.message;
     console.log(this.message);
-    this.showError=true;
+    this.showError = true;
     setTimeout(() => {
       this.showError = false;
     }, 2000);
+  }
 
+  handleResultValue(appValue: any) {
+    let appValuesCopy: AppValues = this.appValues;
+    appValuesCopy = {
+      ...appValuesCopy,
+      visiblePanel: 'one',
+      question: '',
+      mode: false,
+      custom: [],
+      answer: '',
+    };
+    this.appValues = appValuesCopy;
   }
 }
