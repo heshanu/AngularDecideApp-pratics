@@ -8,6 +8,7 @@ import { Errors } from './shared/errors';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  showError: boolean = false;
   error!: Errors;
   show!: boolean;
   message!: string;
@@ -28,7 +29,11 @@ export class AppComponent {
   handleErrors(error: any) {
     this.show = error.show;
     this.message = error.message;
-
     console.log(this.message);
+    this.showError=true;
+    setTimeout(() => {
+      this.showError = false;
+    }, 2000);
+
   }
 }
