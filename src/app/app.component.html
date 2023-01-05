@@ -17,12 +17,12 @@
     ></app-one>
     <app-two
       *ngSwitchCase="'two'"
-
-
+      [appValues]="appValues"
+      (next)="handleNext(appValues)"
+      (hasErrors)="handleErrors($event)"
     ></app-two>
     <app-three
       *ngSwitchCase="'three'"
-
     ></app-three>
   </div>
 </div>

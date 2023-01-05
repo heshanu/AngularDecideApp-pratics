@@ -1,1 +1,12 @@
-<p>two works!</p>
+<div style="width: 400px">
+  <div class="mb-4">
+    <small>Your question was:</small>
+    <h4>{{appValues.question}}</h4>
+  </div>
+  <div class="form-group">
+    <button type="button" class="btn btn-outline-info btn-block"
+    (click)="getResults()">
+      Make Decision!
+    </button>
+  </div>
+</div>

@@ -1,17 +1,26 @@
-import { Component, OnInit,Input,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AppValues } from '../shared/appValues';
-
+import { Errors } from '../shared/errors';
 @Component({
   selector: 'app-two',
   templateUrl: './two.component.html',
-  styleUrls: ['./two.component.css']
+  styleUrls: ['./two.component.css'],
 })
-export class TwoComponent implements OnInit {
+export class TwoComponent {
+  @Input() appValues!: AppValues;
+  @Output() next = new EventEmitter<AppValues>();
+  @Output() hasErrors = new EventEmitter<Errors>();
+  constructor() {}
 
-  @Input() appValues!:AppValues;
-  constructor() { }
+  getResults() {
+    const copyappValue = this.appValues;
+    copyappValue.visiblePanel = 'three';
+    this.next.emit(copyappValue);
 
-  ngOnInit(): void {
+    // let error = {
+    //   show: true,
+    //   message: 'please enter value',
+    // };
+    // this.hasErrors.emit(error);
   }
-
 }
