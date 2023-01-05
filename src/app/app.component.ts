@@ -23,7 +23,7 @@ export class AppComponent {
 
   handleNext(value: AppValues) {
     this.appValues = value;
-    console.log(this.appValues);
+    //console.log(this.appValues);
   }
   handleErrors(error: any) {
     this.show = error.show;

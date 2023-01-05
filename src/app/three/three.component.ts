@@ -23,7 +23,7 @@ export class ThreeComponent implements OnInit {
     const result: string =
       answersArray[Math.floor(Math.random() * answersArray.length)];
     appValueCopy.answer = result;
-    console.log(appValueCopy);
+    //console.log(appValueCopy);
     this.next.emit(appValueCopy);
   }
 

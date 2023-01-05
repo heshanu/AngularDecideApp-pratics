@@ -1,11 +1,42 @@
 <div style="width: 400px">
   <div class="mb-4">
     <small>Your question was:</small>
-    <h4>{{appValues.question}}</h4>
+    <h4>{{ appValues.question }}</h4>
   </div>
+  <div *ngIf="appValues.mode">
+    <input
+      type="text"
+      (click)="changeMode()"
+      class="form-control mb-2"
+      placeholder="Add custom answers"
+      *ngIf="appValues.mode"
+      ngModel
+      #custom
+    />
+    <button type="button" (click)="addCustomAnswer()" class="btn btn-info">
+      Add
+    </button>
+    <div>
+      <span *ngFor="let c of appValues.custom" class="btn btn-primary">
+        {{ c }}
+      </span>
+    </div>
+  </div>
+  <hr />
   <div class="form-group">
-    <button type="button" class="btn btn-outline-info btn-block"
-    (click)="getResults()">
+    <button
+      type="button"
+      class="btn btn-outline-info btn-block"
+      (click)="changeMode()"
+    >
+      I wamt to add my own
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-outline-info btn-block"
+      (click)="getResults()"
+    >
       Make Decision!
     </button>
   </div>
