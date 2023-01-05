@@ -21,6 +21,17 @@ export class TwoComponent {
   @Output() hasErrors = new EventEmitter<Errors>();
   constructor() {}
 
+  validateResults() {
+    if (this.appValues.mode) {
+      if (this.appValues.custom.length > 1) {
+        return true;
+      }
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   changeMode() {
     const copyappValue: AppValues = this.appValues;
     copyappValue.mode = true;
@@ -45,9 +56,18 @@ export class TwoComponent {
   }
 
   getResults() {
-    const copyappValue = this.appValues;
-    copyappValue.visiblePanel = 'three';
-    this.next.emit(copyappValue);
+    if (this.validateResults()) {
+      const copyappValue = this.appValues;
+      copyappValue.visiblePanel = 'three';
+      this.next.emit(copyappValue);
+    } else {
+      let error = {
+        show: true,
+        message: 'u nedd at least two answers',
+      };
+      this.hasErrors.emit(error);
+    }
+
     // let error = {
     //   show: true,
     //   message: 'please enter value',

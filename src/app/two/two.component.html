@@ -17,7 +17,11 @@
       Add
     </button>
     <div>
-      <span *ngFor="let c of appValues.custom" class="btn btn-primary">
+      <span
+        (click)="validateResults()"
+        *ngFor="let c of appValues.custom"
+        class="btn btn-primary"
+      >
         {{ c }}
       </span>
     </div>

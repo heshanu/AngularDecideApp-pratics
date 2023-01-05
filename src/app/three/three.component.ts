@@ -18,20 +18,22 @@ export class ThreeComponent implements OnInit {
   }
 
   showResults() {
-    const appValueCopy = this.appValues;
+    let appValueCopy = this.appValues;
     const answersArray = this.appValues.answers;
-    const result: string =
-      answersArray[Math.floor(Math.random() * answersArray.length)];
+    const customArray = this.appValues.custom;
+    let result;
+    if (!this.appValues.mode) {
+      result = answersArray[Math.floor(Math.random() * answersArray.length)];
+    } else {
+      result = answersArray[Math.floor(Math.random() * answersArray.length)];
+    }
     appValueCopy.answer = result;
     //console.log(appValueCopy);
     this.next.emit(appValueCopy);
   }
 
-
   onStartOver() {
-
-  this.resultValues.emit();
-
+    this.resultValues.emit();
   }
 
   doItAgain() {
